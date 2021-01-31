@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <!--
+    This is the library that provides websocket streaming pub/sub
+    The dev serverver is serving the html and javascript, but it also provides updating fx data on /fx/prices.
+     -->
+    <script src="stomp.js"></script>
+    <script src="sparkline.js"></script>
+    <link rel="style-sheet" href="style.css" />
+  </head>
+  <body>
+    <header>HCL ASSESSMENT</header>
+    <table >
+      <thead>
+        <tr id="table-header"></tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <div class="flex-container">
+      <div id="contact-card">
+        <p>Made By</p>
+        <ul>
+          <li>Shubham Dekate</li>
+          <li>shubhamddevops@gmail.com</li>
+        </ul>
+      </div>
+      <div id="dev-steps">
+        <p>Thought process behind Implementation</p>
+        <ul>
+          <li>
+            Since a lot of frequent update is happening,hence used
+            <i><b>Map</b></i> to store the responses, because it performs better than other data structures
+            <li>Created Separate Modules for Separation of Concerns and they are listed below:
+                <ul>
+                    <li><b>Handle Response Module</b> - <i>Only handles the responses and forward it to <b>Data Manager Module</b></i></li>
+                    <li><b>Data Manager Module</b> - <i>This Modules sort and store the responses and forward it to <b>Grid Module </b></i></li>
+                    <li><b>Grid Module</b> - <i>This Modules create the table and update it based on latest data</li>           
+                </ul>
+            </li>
+            <li><b>NOTE :</b><i> Storing only last 30secs of data for drawing sparkline</i></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Code you write in index.js and anything it depends on will be bundled into bundle.js and
+     is included here -->
+    <script src="bundle.js"></script>
+  </body>
+</html>
